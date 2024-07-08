@@ -1,3 +1,3 @@
 # nodejs-study
 
-Reposítorio para estudos sobre node.js
+Estudo sobre node.js
