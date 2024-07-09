@@ -42,3 +42,24 @@ O NPM também trabalha com um sistema de versionamento bem simples.
 Ao instalar uma dependencia, o NPM vai criar uma pasta chamada "node_modules",
 essa pasta é a pasta padrão dos módulos. Cada modulo instalado em seu projeto
 será salvo dentro dessa pasta.
+
+### nodemon module
+
+Ele serve como um watcher, ou seja, ele fica observando toda vez que um arquivo
+em seu projeto é alterado.
+
+Quando ocorre uma alteração de arquivo, o node mon
+reinicia o processo do node e a aplicação está pronta novamente, evitando de
+ter de ficar executando todo momento o comando node.
+
+O nodemon fará com que a cada alteração no projeto, a aplicação seja
+recarregada.
+
+Vamos inserir o módulo nodemon no nosso projeto, para isso precisamos
+apenas executar o comando npm install -save nodemon. Depois disso,
+verifique no arquivo package.json se foi adicionado a nova dependencia.
+
+O nodemon fornece uma interface CLI. Para iniciar o nodemon, execute
+`nodemon index`, assim o arquivo index.js será observado e a cada alteração
+nele, o nodemon automaticamente recarregará o arquivo, ou seja, é como se ele
+executasse um `node index.js` automaticamente, facilitando sua vida.
