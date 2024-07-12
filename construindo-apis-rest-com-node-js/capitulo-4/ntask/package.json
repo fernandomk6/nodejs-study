@@ -1,0 +1,14 @@
+{
+  "name": "ntask-api",
+  "version": "1.0.0",
+  "description": "API de gestão de tarefas",
+  "main": "index.js",
+  "author": "Fernando Henrique",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "consign": "^0.1.6",
+    "express": "^4.19.2"
+  }
+}
