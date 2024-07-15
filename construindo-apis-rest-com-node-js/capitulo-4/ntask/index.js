@@ -12,3 +12,5 @@ consign()
   .then('routes')
   .then('boot.js')
   .into(app)
+
+module.exports = app
