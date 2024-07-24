@@ -92,3 +92,8 @@ modelos setados
 - O nome da tabela será o nome do modelo
 - Se a tabela ja existir, nao cria uma nova, retorna apenas o model existente
 - Defina o relacionamento de cada tabela
+- Para as associações, crie um arquivo separado, associations.js
+- Implemente o crud da API
+- Instale o body-parser para habilitar o express para receber requisições do 
+tipo json
+- 

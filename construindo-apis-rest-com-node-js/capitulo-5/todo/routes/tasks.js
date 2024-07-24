@@ -4,18 +4,57 @@ module.exports = app => {
   // Obtem o model (representação da tabela Tasks)
   const Tasks = app.models.tasks 
   
-  app.get('/tasks', async (req, res) => {
-    try {
-      // Método que obtem todas as tasks cadastradas
-      const tasks = await Tasks.findAll()
+  app.route('/tasks')
+    .get(async (req, res) => {
+      try {
+        const tasks = await Tasks.findAll()
+        res.json(tasks)
+      } catch (error) {
+        res.status(412).json({ msg: error.message })
+      }
+    })
+    .post(async (req, res) => {
+      try {
+        const task = await Tasks.create(req.body)
+        res.json(task)
+      } catch (error) {
+        res.status(412).json({ msg: error.message })
+      }
+    })
 
-      // Envia o resultado para o cliente em formato json (com status 200)
-      res.json({ tasks })
-    } catch (error) {
-
-      // Em caso de erro, retorna erro com status 500 (erro interno do servidor)
-      // Encapsula a variavel error para debug
-      res.status(500).json(error)
-    }
-  })
+  app.route('/tasks/:id')
+    .get(async (req, res) => {
+      try {
+        const { id } = req.params
+        const where = { id }
+        const task = await Tasks.findOne({ where })
+        if (task) {
+          res.json(task)
+        } else {
+          res.sendStatus(404)
+        }
+      } catch (error) {
+        res.status(412).json({ msg: error.message })
+      }
+    })
+    .put(async (req, res) => {
+      try {
+        const { id } = req.params
+        const where = { id }
+        await Tasks.update(req.body, { where })
+        res.sendStatus(204)
+      } catch (error) {
+        res.status(412).json({ msg: error.message })
+      }
+    })
+    .delete(async (req, res) => {
+      try {
+        const { id } = req.params
+        const where = { id }
+        const task = Tasks.destroy({ where })
+        res.sendStatus(204)
+      } catch (error) {
+        res.status(412).json({ msg: error.message })
+      }
+    })
 }
